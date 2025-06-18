@@ -1,16 +1,18 @@
 ---
 layout: page
 title: About me
-subtitle: Why you'd want to go on a date with me
+subtitle: 
 ---
 
-My name is Inigo Montoya. I have the following qualities:
+### About Me
 
-- I rock a great mustache
-- I'm extremely loyal to my family
+I`m a cat person. I like to hang arond in the garden and play with cats, they are super adorable and soft. You can never find a second animal with such big eyes and sweet sound(Sometimes they do very anonying I have to confirm that). Now, I'm raising one furry cat in my home and she is very clever and understanding. And this is the photo of my cat:
 
-What else do you need?
+![Cat](/assets/img/cat.jpg "Cat")
 
-### My story
 
-To be honest, I'm having some trouble remembering right now, so why don't you just watch [my movie](https://en.wikipedia.org/wiki/The_Princess_Bride_%28film%29) and it will answer **all** your questions.
+
+After work, I used to go fitness with my friends. I enjoy it not for shaping my body, but clearing my mind and gaining more energy from it. Also I have some interest in music, especially in national music. I can play HuLuSi and BaWu, which are two traditional instrument in southwestern China. Life is not only for exploring, but also for enjoyiung. Try something new and insteresting all the time.
+![Finess](/assets/img/fitness.png "Fitness")
+
+BTW, I`m a huge fan for all kinds of movies, if you want to discuss with me, come and be my friend in Wechat. You are always welcome here. My Wechat name is **Merealtea**. Of course we can discuss more than movie.

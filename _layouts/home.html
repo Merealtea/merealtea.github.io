@@ -3,102 +3,190 @@ layout: page
 ---
 
 {{ content }}
+<h2 class="page-title">Personal Introduction</h2>
+
+<p>
+  I am a second-year master's student in Control Science and Engineering at the 
+  <a href="https://www.ji.sjtu.edu.cn/"  target="_blank" rel="noopener noreferrer">University of Michigan–Shanghai Jiao Tong University Joint Institute</a>, 
+  where I work under the supervision of Dr. 
+  <a href="https://scholar.google.com/citations?hl=zh-CN&user=TH_lIj0AAAAJ" target="_blank" rel="noopener noreferrer">Hanyang Zhuang</a> 
+  at the 
+  <a href="https://cyberc3.sjtu.edu.cn/" target="_blank" rel="noopener noreferrer">CyberC3 Intelligent Vehicle Lab</a>, 
+  led by Prof. 
+  <a href="https://scholar.google.com/citations?hl=zh-CN&user=0TCYA3YAAAAJ" target="_blank" rel="noopener noreferrer">Ming Yang</a>. 
+  I received my bachelor’s degree in Artificial Intelligence from 
+  <a href="https://www.sjtu.edu.cn/" target="_blank" rel="noopener noreferrer">Shanghai Jiao Tong University</a>.
+</p>
+<p> 
+  My research focuses on multi-vehicle cooperative perception , aiming to develop robust and efficient V2V (Vehicle-to-Vehicle) and V2X (Vehicle-to-Everything) technologies for real-world deployment. I am also deeply interested in control systems for autonomous vehicles and robotics , with a passion for building intelligent, safe, and scalable solutions for future transportation systems.
+</p>
+
+<h2 class="page-title">Research</h2>
 
 {% assign posts = paginator.posts | default: site.posts %}
+{% assign interns = paginator.interns | default: site.interns %}
 
-<!-- role="list" needed so that `list-style: none` in Safari doesn't remove the list semantics -->
 <ul class="posts-list list-unstyled" role="list">
   {% for post in posts %}
   <li class="post-preview">
     <article>
 
-      {%- capture thumbnail -%}
-        {% if post.thumbnail-img %}
-          {{ post.thumbnail-img }}
-        {% elsif post.cover-img %}
-          {% if post.cover-img.first %}
-            {{ post.cover-img[0].first.first }}
-          {% else %}
-            {{ post.cover-img }}
+      <!-- 容器：整个 post -->
+      <div class="post-container">
+
+        <!-- 标题 -->
+        <h3 class="post-subtitle"><strong>{{ post.title | strip_html }}</strong></h3>
+
+        <!-- 内容区域：作者、publication、链接 + 图片 -->
+        <div class="post-body">
+
+          <!-- 左侧内容 -->
+          <div class="post-content">
+            {% if post.author %}
+              <p class="post-author">{{ post.author | strip_html }}</p>
+            {% endif %}
+
+            {% if post.publication %}
+              <p class="post-publication">{{ post.publication | strip_html }}</p>
+            {% endif %}
+
+            <!-- Links -->
+            <div class="post-links">
+              {% if post.video %}
+                <a href="{{ post.video | absolute_url }}" class="post-link"><strong>[Video]</strong></a>
+              {% endif %}
+              {% if post.paper %}
+                <a href="{{ post.paper | absolute_url }}" class="post-link"><strong>[Paper]</strong></a>
+              {% endif %}
+              {% if post.code %}
+                <a href="{{ post.code | absolute_url }}" class="post-link"><strong>[Code]</strong></a>
+              {% endif %}
+            </div>
+          </div>
+
+          <!-- 右侧缩略图 -->
+          {% assign thumbnail = post.thumbnail-img | default: post.cover-img %}
+          {% if thumbnail %}
+          <div class="post-thumbnail">
+            <img src="{{ thumbnail | absolute_url }}" alt="Thumbnail for {{ post.title }}">
+          </div>
           {% endif %}
-        {% else %}
-        {% endif %}
-      {% endcapture %}
-      {% assign thumbnail=thumbnail | strip %}
 
-      {% if site.feed_show_excerpt == false %}
-      {% if thumbnail != "" %}
-      <div class="post-image post-image-normal">
-        <a href="{{ post.url | absolute_url }}" aria-label="Thumbnail">
-          <img src="{{ thumbnail | absolute_url }}" alt="Post thumbnail">
-        </a>
+        </div>
+
       </div>
-      {% endif %}
-      {% endif %}
-
-      <a href="{{ post.url | absolute_url }}">
-        <h2 class="post-title">{{ post.title | strip_html }}</h2>
-
-        {% if post.subtitle %}
-          <h3 class="post-subtitle">
-          {{ post.subtitle | strip_html }}
-          </h3>
-        {% endif %}
-      </a>
-
-      {% if post.author %}
-        <span>By <strong>{{ post.author | strip_html }}</strong></span>
-      {% endif %}
-      <p class="post-meta">
-        {% assign date_format = site.date_format | default: "%B %-d, %Y" %}
-        Posted on {{ post.date | date: date_format }}
-      </p>
-
-      {% if thumbnail != "" %}
-      <div class="post-image post-image-small">
-        <a href="{{ post.url | absolute_url }}" aria-label="Thumbnail">
-          <img src="{{ thumbnail | absolute_url }}" alt="Post thumbnail">
-        </a>
-      </div>
-      {% endif %}
-
-      {% unless site.feed_show_excerpt == false %}
-      {% if thumbnail != "" %}
-      <div class="post-image post-image-short">
-        <a href="{{ post.url | absolute_url }}" aria-label="Thumbnail">
-          <img src="{{ thumbnail | absolute_url }}" alt="Post thumbnail">
-        </a>
-      </div>
-      {% endif %}
-
-      <div class="post-entry">
-        {% assign excerpt_length = site.excerpt_length | default: 50 %}
-        {{ post.excerpt | strip_html | truncatewords: excerpt_length }}
-        {% assign excerpt_word_count = post.excerpt | number_of_words %}
-        {% if post.content != post.excerpt or excerpt_word_count > excerpt_length %}
-          <a href="{{ post.url | absolute_url }}" class="post-read-more">[Read&nbsp;More]</a>
-        {% endif %}
-      </div>
-      {% endunless %}
-
-      {% if site.feed_show_tags != false and post.tags.size > 0 %}
-      <div class="blog-tags">
-        <span>Tags:</span>
-        <!-- role="list" needed so that `list-style: none` in Safari doesn't remove the list semantics -->
-        <ul class="d-inline list-inline" role="list">
-          {% for tag in post.tags %}
-          <li class="list-inline-item">
-            <a href="{{ '/tags' | absolute_url }}#{{- tag -}}">{{- tag -}}</a>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-      {% endif %}
 
     </article>
   </li>
   {% endfor %}
 </ul>
+
+<h2 class="page-title">Internship</h2>
+
+<!--  DIDI -->
+<article>
+
+  <!-- 容器：整个 post -->
+  <div class="post-container">
+
+    <!-- 标题 -->
+    <h3 class="post-subtitle"><strong>DiDi Company Internship Practice</strong></h3>
+
+    <!-- 内容区域：作者、publication、链接 + 图片 -->
+    <div class="post-body">
+
+      <!-- 左侧内容 -->
+
+      <div class="post-content">
+        <h4>Time: 2022/06-2022/10</h4>
+        <p> 
+          I participated in a project focused on improving motion planning multi-modality for autonomous vehicles. My work involved researching trajectory prediction and applying perturbation-based data augmentation techniques using reinforcement learning methods within the CARLA simulation environment. 
+        </p>
+      </div>
+
+      <!-- 右侧缩略图 -->
+      <div class="post-thumbnail">
+          <a href="https://www.didiglobal.com/" >
+            <img src="/assets/img/didi.jpg" alt="Thumbnail for {{ post.title }}">
+          </a>
+        </div>
+      
+
+    </div>
+
+  </div>
+
+</article>
+
+<!--  Momenta -->
+
+<article>
+
+  <!-- 容器：整个 post -->
+  <div class="post-container">
+
+    <!-- 标题 -->
+    <h3 class="post-subtitle"><strong>Momenta Company Internship Practice</strong></h3>
+
+    <!-- 内容区域：作者、publication、链接 + 图片 -->
+    <div class="post-body">
+
+      <!-- 左侧内容 -->
+      <div class="post-content">
+        <h4>Time: 2025/01-2025/04</h4>
+        <p> 
+          I contributed to the mining and preprocessing of lane change scenarios aimed at mitigating undesirable lane change behaviors in autonomous driving systems. Specifically, I developed a vision-language model (VLM)-based scenario checker to identify and filter invalid early and late lane change instances within urban intersection datasets.
+        </p>
+      </div>
+
+      <!-- 右侧缩略图 -->
+      <div class="post-thumbnail">
+        <a href="https://www.momenta.cn/en/" >
+          <img src="/assets/img/momenta.jpg" alt="Thumbnail for {{ post.title }}">
+        </a>
+      </div>
+      
+
+    </div>
+
+  </div>
+
+</article>
+
+
+<!--  LRL -->
+<article>
+
+  <!-- 容器：整个 post -->
+  <div class="post-container">
+
+    <!-- 标题 -->
+    <h3 class="post-subtitle"><strong>Legged Robot Lab Internship Practice</strong></h3>
+
+    <!-- 内容区域：作者、publication、链接 + 图片 -->
+    <div class="post-body">
+
+      <!-- 左侧内容 -->
+      <div class="post-content">
+        <h4>Time: 2025/05-Present</h4>
+        <p> Work for robotic dog navigation and we are still working on it</p>
+      </div>
+
+      <!-- 右侧缩略图 -->
+      <div class="post-thumbnail">
+        <a href="https://cuhkleggedrobotlab.github.io/" >
+          <img src="/assets/img/lrl.jpg" alt="Thumbnail for {{ post.title }}">
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+</article>
+
+
+
 
 {% if paginator.total_pages > 1 %}
 <ul class="pagination main-pager">
