@@ -13,6 +13,6 @@ I`m a cat person. I like to hang arond in the garden and play with cats, they ar
 
 
 After work, I used to go fitness with my friends. I enjoy it not for shaping my body, but clearing my mind and gaining more energy from it. Also I have some interest in music, especially in national music. I can play HuLuSi and BaWu, which are two traditional instrument in southwestern China. Life is not only for exploring, but also for enjoyiung. Try something new and insteresting all the time.
-![Finess](/assets/img/fitness.png "Fitness")
+![Finess](/assets/img/fitness.jpg "Fitness")
 
 BTW, I`m a huge fan for all kinds of movies, if you want to discuss with me, come and be my friend in Wechat. You are always welcome here. My Wechat name is **Merealtea**. Of course we can discuss more than movie.
